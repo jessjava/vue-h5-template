@@ -26,7 +26,7 @@ export default {
   methods: {}
 }
 </script>
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .index-container {
   .warpper {
     padding: 12px;

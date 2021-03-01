@@ -6,7 +6,10 @@ const plugins = [
     {
       libraryName: 'vant',
       libraryDirectory: 'es',
-      style: true
+      // 默认语法，不覆盖vant的变量
+      // style: true
+      // 指定样式路径
+      style: (name) => `${name}/style/less`,
     },
     'vant'
   ]

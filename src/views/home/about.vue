@@ -6,7 +6,6 @@
 
 <script>
 // 请求接口
-import { getUserInfo } from '@/api/user.js'
 import { mapGetters } from 'vuex'
 export default {
   data() {
@@ -15,7 +14,8 @@ export default {
         'Vue-cli4',
         '配置多环境变量',
         'VantUI 组件按需加载',
-        'Sass 全局样式',
+        'Less 全局样式',
+        'VantUI - Less样式覆盖',
         'Webpack 4',
         'Vuex 状态管理',
         'Axios 封装及接口管理',
@@ -27,7 +27,6 @@ export default {
         '配置 externals 引入 cdn 资源',
         '去掉 console.log',
         'splitChunks 单独打包第三方模块',
-        '添加 IE 兼容',
         'Eslint+Pettier 统一开发规范'
       ]
     }
@@ -41,7 +40,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="less">
 .about-container {
   /* 你的命名空间 */
   background: #fff;
