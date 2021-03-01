@@ -24,14 +24,14 @@ export default {
           to: {
             name: 'Home'
           },
-          icon: 'home-o'
+          icon: 'wap-home'
         },
         {
           title: '关于',
           to: {
             name: 'About'
           },
-          icon: 'user-o'
+          icon: 'service'
         }
       ]
     }

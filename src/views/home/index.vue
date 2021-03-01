@@ -1,13 +1,14 @@
 <template>
   <div class="index-container">
     <div class="warpper">
-      <h1 class="home__title"><span> VUE H5开发模板</span></h1>
-      <h2 class="home__desc">
-        A vue h5 template with Vant UI
-      </h2>
+      <h1 class="home__title"><span> VUE H5 工程模板</span></h1>
     </div>
     <div class="content">
-      welcome
+      <div class="title">mixin-less</div>
+      <div class="desc">
+        mixin-less演示，mixin-less演示，mixin-less演示，mixin-less演示，
+        mixin-less演示，mixin-less演示，mixin-less演示，mixin-less演示
+      </div>
     </div>
   </div>
 </template>
@@ -44,15 +45,22 @@ export default {
         color: #333;
       }
     }
-    .home__desc {
-      color: rgba(69, 90, 100, 0.6);
-      font-size: 14px;
-    }
   }
 
   .content {
     padding: 12px;
     font-size: 14px;
+
+    .title {
+      color: rgba(69, 90, 100, 0.6);
+      .textoverflow(1);
+      margin: 8px 0;
+    }
+
+    .desc {
+      .textoverflow(2);
+      line-height: 1.6;
+    }
   }
 }
 </style>

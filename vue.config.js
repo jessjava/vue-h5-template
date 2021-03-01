@@ -36,6 +36,17 @@ const IS_PROD = ['production', 'prod'].includes(process.env.NODE_ENV)
 //   }
 // }
 
+// 使用 style-resources-loader mixin，全局注入less
+function addStyleResource(rule) {
+  rule.use('style-resource')
+      .loader('style-resources-loader')
+      .options({
+          patterns: [
+              path.resolve(__dirname, 'src/assets/css/mixin.less'),
+          ],
+      })
+}
+
 module.exports = {
   publicPath: './', // 署应用包时的基本 URL。 vue-router hash 模式使用
   //  publicPath: '/app/', //署应用包时的基本 URL。  vue-router history模式使用
@@ -50,18 +61,18 @@ module.exports = {
       //  当出现编译器错误或警告时，在浏览器中显示全屏覆盖层
       warnings: false,
       errors: true
+    },
+    proxy: {
+      //配置跨域
+      '/api': {
+          target: "https://test.xxx.com",
+          // ws:true,
+          changOrigin: true,
+          pathRewrite:{
+              '^/api':'/'
+          }
+      }
     }
-    // proxy: {
-    //   //配置跨域
-    //   '/api': {
-    //       target: "https://test.xxx.com",
-    //       // ws:true,
-    //       changOrigin:true,
-    //       pathRewrite:{
-    //           '^/api':'/'
-    //       }
-    //   }
-    // }
   },
   css: {
     extract: IS_PROD, // 是否将组件中的 CSS 提取至一个独立的 CSS 文件中 (而不是动态注入到 JavaScript 中的 inline 代码)。
@@ -104,6 +115,9 @@ module.exports = {
   chainWebpack: config => {
     config.plugins.delete('preload') // TODO: need test
     config.plugins.delete('prefetch') // TODO: need test
+
+    const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
+    types.forEach(type => addStyleResource(config.module.rule('less').oneOf(type)))
 
     // 别名 alias
     config.resolve.alias
